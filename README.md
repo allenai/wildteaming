@@ -48,9 +48,9 @@ For more findings, please refer to our paper!
 <hr>
 <img src=assets/wildteaming.png width=900/>
 
-
 ## Mine Jailbreak Tactics In-the-Wild
 
+WildTeaming mines jailbreak tactics from in-the-wild user-chatbot interactions (i.e., LMSYS, WildChat) and result 
 
 <img src=assets/jailbreak_tactics.png width=700/>
 
