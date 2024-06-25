@@ -38,10 +38,9 @@
 [Nouha Dziri](https://nouhadziri.github.io/)
 &nbsp; &nbsp; &nbsp; ⭐ Co-second authors
 
-We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming
+We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an automatic red-teaming framework that mines *in-the-wild* user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes selections of multiple mined tactics for systematic exploration of novel and even more challenging jailbreaks.
 
-
-<img src=assets/wildteaming.png width=700/>
+<img src=assets/wildteaming.png width=900/>
 
 
 
