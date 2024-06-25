@@ -1,3 +1,5 @@
+# <img src=assets/wildteaming_logo.png width=40/> WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models
+
 <p align="center">
 
 [//]: # (  <a href="https://allenai.github.io/lumos/">)
