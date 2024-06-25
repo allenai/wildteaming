@@ -1,4 +1,4 @@
-# <img src=assets/wildteaming_logo.png width=40/> WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models
+![jailbreak_results_breakdown](https://github.com/allenai/wildteaming/assets/29760300/f1f10f1e-a90e-441a-8023-d0780f2c69f1)# <img src=assets/wildteaming_logo.png width=40/> WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models
 <p align="center">
 
 [//]: # (  <a href="https://allenai.github.io/lumos/">)
@@ -38,19 +38,16 @@
 [Nouha Dziri](https://nouhadziri.github.io/)
 &nbsp; &nbsp; &nbsp; ⭐ Co-second authors
 
-We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an automatic red-teaming framework that mines *in-the-wild* user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes selections of multiple mined tactics for systematic exploration of novel and even more challenging jailbreaks.
+We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an automatic red-teaming framework that mines *in-the-wild* user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes selections of multiple mined tactics for systematic exploration of novel and even more challenging jailbreaks. WildTeaming intends to address two challenges: 
+- 🔍 Broadly identifying jailbroken behaviors of LLMs.
+- 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense.
 
-
-We introduce the WildTeaming framework to address two challenges: 
-
-- broadly identifying jailbroken behaviors of LLMs
-- creating a publicly open, large-scale safety training resource for systematic defense.
-
-<p></p>
-
-
+<hr>
 <img src=assets/wildteaming.png width=900/>
 
+## WildTeaming for Automatic Jailbreaking
+
+<img src=assets/jailbreak_results_breakdown.png width=400/>
 
 ## WildJailbreak Dataset
 
