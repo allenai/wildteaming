@@ -41,7 +41,7 @@
 We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming
 
 
-<img src=assets/wildteaming.png width=650/>
+<img src=assets/wildteaming.png width=700/>
 
 
 
