@@ -1,4 +1,3 @@
-![jailbreak_results_breakdown](https://github.com/allenai/wildteaming/assets/29760300/f1f10f1e-a90e-441a-8023-d0780f2c69f1)# <img src=assets/wildteaming_logo.png width=40/> WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models
 <p align="center">
 
 [//]: # (  <a href="https://allenai.github.io/lumos/">)
@@ -47,7 +46,7 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an aut
 
 ## WildTeaming for Automatic Jailbreaking
 
-<img src=assets/jailbreak_results_breakdown.png width=400/>
+<img src=assets/jailbreak_results_breakdown.png width=700/>
 
 ## WildJailbreak Dataset
 
