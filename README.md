@@ -44,25 +44,35 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an aut
 <hr>
 <img src=assets/wildteaming.png width=900/>
 
+
+## Mine Jailbreak Tactics In-the-Wild
+
+
+<img src=assets/jailbreak_tactics.png width=700/>
+
+
 ## WildTeaming for Automatic Jailbreaking
 
 <img src=assets/jailbreak_results_breakdown.png width=700/>
 
 ## WildJailbreak Dataset
 
-With WildTeaming, we create WildJailbreak, a large-scale open-source synthetic safety dataset with 262K *vanilla* (direct request) and *adversarial* (complex jailbreak) prompt-response pairs. We identify the training properties that enable an ideal balance of safety behaviors: **appropriate safeguarding without over-refusal, effective handling of both vanilla and adversarial queries, and minimal, if any, decrease in general capabilities.** To achieve such balance WildJailbreak offer the following four types of prompt-response pairs:
+With WildTeaming, we create [WildJailbreak](https://huggingface.co/datasets/allenai/wildjailbreak), a large-scale open-source synthetic safety dataset with 262K *vanilla* (direct request) and *adversarial* (complex jailbreak) prompt-response pairs. We identify the training properties that enable an ideal balance of safety behaviors: **appropriate safeguarding without over-refusal, effective handling of both vanilla and adversarial queries, and minimal, if any, decrease in general capabilities.** To achieve such balance, WildJailbreak offer the following four types of data:
 
 - **Vanilla Harmful**: direct requests that could potentially elicit harmful responses from LMs.
 - **Vanilla Benign**: harmless prompts used to combat exaggerated safety, i.e., over-refusal on benign queries.
 - **Adversarial Harmful**: adversarial jailbreaks that convey harmful requests in more convoluted and stealthy ways.
 - **Adversarial Benign**: adversarial queries that look like jailbreaks but contain no harmful intent. 
 
-<img src=assets/data_example_four_types.png width=900/>
+<img src=assets/data_example_four_types.png width=700/>
+
+[//]: <hr>
+[//]: <hr>
+[//]: <img src=assets/vani_vs_adv_scale.png width=500/>
 
 ## Models
 
-
-
+We release the [7B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) and [13B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) safety-trained Tulu2 models on Huggingface!
 
 ## Citation
 
