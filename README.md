@@ -41,7 +41,7 @@
 
 We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an automatic red-teaming framework that mines *in-the-wild* user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes selections of multiple mined tactics for systematic exploration of novel and even more challenging jailbreaks. WildTeaming intends to address two challenges: 
 - 🔍 Broadly identifying jailbroken behaviors of LLMs.
-- 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense.
+- 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense (WildJailbreak).
 
 For more findings, please refer to our paper!
 
