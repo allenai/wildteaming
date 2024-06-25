@@ -43,6 +43,8 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an aut
 - 🔍 Broadly identifying jailbroken behaviors of LLMs.
 - 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense.
 
+For more findings, please refer to our paper!
+
 <hr>
 <img src=assets/wildteaming.png width=900/>
 
