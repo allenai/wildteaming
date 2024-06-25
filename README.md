@@ -46,10 +46,11 @@ We introduce the WildTeaming framework to address two challenges:
 - broadly identifying jailbroken behaviors of LLMs
 - creating a publicly open, large-scale safety training resource for systematic defense.
 
+<p></p>
+
+
 <img src=assets/wildteaming.png width=900/>
 
-<p><\p>
-<p><\p>
 
 ## WildJailbreak Dataset
 
