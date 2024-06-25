@@ -46,18 +46,19 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an aut
 
 ## Citation
 
-If you find this work helpful, please feel free to cite our work!
+If you find it helpful, please feel free to cite our work!
 ```
-@article{yin2023lumos,
-  title={{Agent Lumos: Unified and Modular Training for Open-Source Language Agents}},
-  author={Yin, Da and Brahman, Faeze and Ravichander, Abhilasha and Chandu, Khyathi and Chang, Kai-Wei and Choi, Yejin and Lin, Bill Yuchen},
-  journal={arXiv preprint arXiv:2311.05657},
-  year={2023}
+@misc{wildteaming2024,
+      title={{WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models}}, 
+      author={{Liwei Jiang and Seungju Han and Kavel Rao and Allyson Ettinger and Faeze Brahman and Sachin Kumar and Niloofar Mireshghallah and Ximing Lu and Maarten Sap and Nouha Dziri and Yejin Choi}}
+      year={2024},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 ```
 
 ## 🔥 News
-- *[2024, June 25]*
+- **[2024, June 25]**
   - 📑 **Paper** We release the WildTeaming paper on arXiv!
   - 🤗 **Models** We release the [7B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) and [13B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) safety-trained Tulu2 models on Huggingface!
   - 🤗 **Data** We release the [WildJailbreak](https://huggingface.co/datasets/allenai/wildjailbreak) *training* and *evaluation* datasets on Huggingface! 
