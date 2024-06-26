@@ -50,9 +50,9 @@ For more findings, please refer to our paper!
 
 ## Resources
 
-  - 📑 **Paper** We release the WildTeaming paper on arXiv!
-  - 🤗 **Models** We release the [7B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) and [13B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) safety-trained Tulu2 models on Huggingface!
-  - 🤗 **Data** We release the [WildJailbreak](https://huggingface.co/datasets/allenai/wildjailbreak) *training* and *evaluation* datasets on Huggingface! 
+  - 📑 **Paper**: arXiv
+  - 🤗 **Models**: [7B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) and [13B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) safety-trained Tulu2 models
+  - 🤗 **Data**: [WildJailbreak](https://huggingface.co/datasets/allenai/wildjailbreak) *training* and *evaluation* datasets
 
 ## Mine Jailbreak Tactics In-the-Wild
 
