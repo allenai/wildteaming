@@ -76,14 +76,6 @@ With WildTeaming, we create [WildJailbreak](https://huggingface.co/datasets/alle
 
 <img src=assets/data_example_four_types.png width=700/>
 
-[//]: <hr>
-[//]: <hr>
-[//]: <img src=assets/vani_vs_adv_scale.png width=500/>
-
-[//]: ## Models
-
-[//]: We release the [7B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) and [13B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) safety-trained Tulu2 models on Huggingface!
-
 ## Citation
 
 If you find it helpful, please feel free to cite our work!
