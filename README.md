@@ -43,7 +43,7 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> [WildTeaming](https
 - 🔍 Broadly identifying jailbroken behaviors of LLMs.
 - 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense (WildJailbreak).
 
-For more findings, please refer to our paper!
+For more findings, please refer to our [paper](https://arxiv.org/abs/2406.18510)!
 
 <hr>
 <img src=assets/wildteaming.png width=900/>
