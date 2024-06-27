@@ -50,7 +50,7 @@ For more findings, please refer to our [paper](https://arxiv.org/abs/2406.18510)
 
 ## Resources
 
-  - 📑 **Paper**: arXiv
+  - 📑 **Paper**: [arXiv](https://arxiv.org/abs/2406.18510)
   - 🤗 **Models**: [7B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) and [13B](https://huggingface.co/allenai/llama2-13b-WildJailbreak) safety-trained Tulu2 models
   - 🤗 **Data**: [WildJailbreak](https://huggingface.co/datasets/allenai/wildjailbreak) *training* and *evaluation* datasets
 
