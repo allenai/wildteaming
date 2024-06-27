@@ -39,7 +39,7 @@
 [Nouha Dziri](https://nouhadziri.github.io/)
 &nbsp; &nbsp; &nbsp; ⭐ Co-second authors
 
-We introduce <img src=assets/wildteaming_logo.png width=25/> WildTeaming, an automatic red-teaming framework that mines *in-the-wild* user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes selections of multiple mined tactics for systematic exploration of novel and even more challenging jailbreaks. WildTeaming intends to address two challenges: 
+We introduce <img src=assets/wildteaming_logo.png width=25/> [WildTeaming](https://arxiv.org/pdf/2406.18510), an automatic red-teaming framework that mines *in-the-wild* user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes selections of multiple mined tactics for systematic exploration of novel and even more challenging jailbreaks. WildTeaming intends to address two challenges: 
 - 🔍 Broadly identifying jailbroken behaviors of LLMs.
 - 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense (WildJailbreak).
 
@@ -84,7 +84,7 @@ If you find it helpful, please feel free to cite our work!
       title={{WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models}}, 
       author={{Liwei Jiang and Seungju Han and Kavel Rao and Allyson Ettinger and Faeze Brahman and Sachin Kumar and Niloofar Mireshghallah and Ximing Lu and Maarten Sap and Nouha Dziri and Yejin Choi}}
       year={2024},
-      archivePrefix={arXiv},
+      journal={arXiv preprint arXiv:2406.18510},
       primaryClass={cs.CL}
 }
 ```
