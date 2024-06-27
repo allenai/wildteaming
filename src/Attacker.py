@@ -62,11 +62,11 @@ class Attacker:
         """
         Loads the tactics map amd the frequency map.
         """
-        data_path = "data/tactics/itw_gpt4_mined_v1_strategy_map.json"
+        data_path = "data/tactics/auto_tactics.json"
         with open(data_path, "r") as f:
             self.all_tactics_map = json.load(f)
         self.tactic_frequency_map = read_json(
-            "data/tactics/itw_gpt4_mined_v1_strategy_map_to_frequency.json")
+            "data/tactics/auto_tactics_frequency.json")
 
         # ignore some ill-formed tactics and tactics related to explicit content
         to_exclude_tactics = ["strategy name", "name of the first new strategy", ""]
