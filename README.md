@@ -30,8 +30,6 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> [WildTeaming](https
 
 For more findings, please refer to our [paper](https://arxiv.org/abs/2406.18510)!
 
-<hr>
-<img src=assets/wildteaming.png width=900/>
 <img src=assets/wildteaming.gif width=900/>
 
 ## Resources
@@ -47,7 +45,6 @@ WildTeaming mines jailbreak tactics from in-the-wild user-chatbot interactions (
 Please find [manually identified tactics](https://github.com/allenai/wildteaming/blob/0d9a7211a08e13334b810ca0306557339437f013/data/tactics/manual_tactics.tsv) and [automatically mined tactics](https://github.com/allenai/wildteaming/blob/0d9a7211a08e13334b810ca0306557339437f013/data/tactics/auto_tactics.json).
 
 <img src=assets/jailbreak_tactics.png width=700/>
-
 
 ## WildTeaming for Automatic Jailbreaking
 
