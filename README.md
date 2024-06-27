@@ -8,15 +8,11 @@
 
 [//]: # (  </a>)
 
-  <a href="https://arxiv.org/abs/2406.18510">
-    <img src="https://img.shields.io/badge/📝-Paper-blue">
-  </a>
-  <a href="https://huggingface.co/datasets/allenai/wildjailbreak">
-    <img src="https://img.shields.io/badge/🤗-Data-orange">
-  </a>
-  <a href="https://huggingface.co/allenai/llama2-7b-WildJailbreak">
-    <img src="https://img.shields.io/badge/🤗-Model-green">
-  </a>
+<a href="https://arxiv.org/abs/2406.18510"><img src="https://img.shields.io/badge/📝-paper-blue"></a>
+<a href="https://huggingface.co/datasets/allenai/wildjailbreak"><img src="https://img.shields.io/badge/🤗-wildjailbreak (data)-orange"></a>
+<a href="https://huggingface.co/allenai/llama2-7b-WildJailbreak"><img src="https://img.shields.io/badge/🤗-tulu2--7b--wildjailbreak (model)-green"></a>
+<a href="https://huggingface.co/allenai/llama2-13b-WildJailbreak"><img src="https://img.shields.io/badge/🤗-tulu2--13b--wildjailbreak (model)-green"></a>
+<a href="https://github.com/allenai/wildteaming"><img src="https://img.shields.io/badge/🔗-code-red"></a>
 
 [//]: # (  <a href="https://huggingface.co/spaces/ai2lumos/lumos_data_demo">)
 
