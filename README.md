@@ -8,7 +8,7 @@
 
 [//]: # (  </a>)
 
-  <a href="https://arxiv.org/abs/xx">
+  <a href="https://arxiv.org/abs/2406.18510">
     <img src="https://img.shields.io/badge/📝-Paper-blue">
   </a>
   <a href="https://huggingface.co/datasets/allenai/wildjailbreak">
