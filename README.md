@@ -63,6 +63,8 @@ WildTeaming mines jailbreak tactics from in-the-wild user-chatbot interactions (
 
 ## WildTeaming for Automatic Jailbreaking
 
+One core mission of WildTeaming is to reveal broadly model vulnerabilities. By combinatorially composing selections of in-the-wild jailbreak tactics, WildTeaming is able to find more unique successful attacks within fewer attack attempts.
+
 <img src=assets/jailbreak_results_breakdown.png width=700/>
 
 ## WildJailbreak Dataset
