@@ -41,7 +41,9 @@ For more findings, please refer to our [paper](https://arxiv.org/abs/2406.18510)
 
 ## Mine Jailbreak Tactics In-the-Wild
 
-WildTeaming mines jailbreak tactics from in-the-wild user-chatbot interactions (i.e., LMSYS, WildChat), resulting in a more diverse repository of novel jailbreak tactics than previous resources. You can find the lists of [manually identified seed tactics](https://github.com/allenai/wildteaming/blob/0d9a7211a08e13334b810ca0306557339437f013/data/tactics/manual_tactics.json) and the [automatically mined tactics](https://github.com/allenai/wildteaming/blob/0d9a7211a08e13334b810ca0306557339437f013/data/tactics/auto_tactics.json).
+WildTeaming mines jailbreak tactics from in-the-wild user-chatbot interactions (i.e., LMSYS, WildChat), resulting in a more diverse repository of novel jailbreak tactics than previous resources.
+
+Please find [manually identified tactics](https://github.com/allenai/wildteaming/blob/0d9a7211a08e13334b810ca0306557339437f013/data/tactics/manual_tactics.json) and [automatically mined tactics](https://github.com/allenai/wildteaming/blob/0d9a7211a08e13334b810ca0306557339437f013/data/tactics/auto_tactics.json).
 
 <img src=assets/jailbreak_tactics.png width=700/>
 
