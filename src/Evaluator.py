@@ -4,9 +4,8 @@ import ray
 from transformers import AutoTokenizer
 
 sys.path.append(os.getcwd())
-from src.jailbreak_baselines.wildteaming.language_models import *
-from data.strategies.model_prompts.evaluator_prompts import evaluator_prompts
-
+from src.language_models import *
+from data.prompts.evaluator_prompts import evaluator_prompts
 
 class Evaluator:
     def __init__(self, evaluator_config, model=None, tokenizer=None):

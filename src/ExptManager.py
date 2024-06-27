@@ -5,9 +5,9 @@ import os.path
 import pandas as pd
 
 sys.path.append(os.getcwd())
-from src.utils.main_utils import *
-from src.jailbreak_baselines.wildteaming.Pruner import *
-from src.jailbreak_baselines.wildteaming.Defender import *
+from src.utils import *
+from src.Pruner import *
+from src.Defender import *
 
 random.seed(42)
 
@@ -37,7 +37,7 @@ class ExptManager:
         """
         if self.expt_config["dataset"] == "harmbench":
             split = self.expt_config["split"]
-            data_path = f"src/HarmBench/data/behavior_datasets/harmbench_behaviors_text_{split}.csv"
+            data_path = f"src/data/harmbench/harmbench_behaviors_text_{split}.csv"
             df_data = pd.read_csv(data_path)
             if self.expt_config["data_types"] != "all":
                 data_types = self.expt_config["data_types"].split("_")
@@ -46,42 +46,9 @@ class ExptManager:
             self.test_cases = {d["Behavior"]: {"behavior_info": d} for d in all_data}
 
             # load target string map
-            data_path = "src/HarmBench/data/optimizer_targets/harmbench_targets_text.json"
+            data_path = "src/data/harmbench/harmbench_targets_text.json"
             with open(data_path, "r") as f:
                 self.behavior_target_map = json.load(f)
-
-        elif self.expt_config["dataset"] == "merged_and_shuffled_vanilla.v.02_train":
-            data_path = "/net/nfs.cirrascale/mosaic/oe-safety-datasets/v0_2/categories/seungju_new_completions/tulu_format/merged_and_shuffled_vanilla.v.02_train.jsonl"
-            with open(data_path, 'r') as f:
-                all_data = [json.loads(l) for l in f]
-            self.test_cases = {d["messages"][0]["content"]: d for d in all_data}
-
-        elif self.expt_config["dataset"] == "xstest_expanded/v1":
-            data_path = "/net/nfs.cirrascale/mosaic/liweij/auto_jailbreak/data/safety_training_data/xstest_expanded/v1.jsonl"
-            all_data = load_standard_data(data_path)
-            self.test_cases = {d["messages"][0]["content"]: d for d in all_data}
-
-        elif self.expt_config["dataset"] == "unused_vani_h_prompts_dedup_minhash":
-            data_path = "/net/nfs.cirrascale/mosaic/liweij/auto_jailbreak/data/safety_training_data/v3/raw/unused_vani_h_prompts_dedup_minhash.jsonl"
-            all_data = load_standard_data(data_path)
-            self.test_cases = {d["prompt"]: d for d in all_data}
-
-        elif self.expt_config["dataset"] == "xstest_expanded/v2":
-            data_path = "/net/nfs.cirrascale/mosaic/oe-safety-datasets/contrastive_benign_vanilla_data/gpt-4_responses_harmful_prompts_diverse_v2.json"
-            all_data = load_standard_data(data_path)[0]["subcategories"][0]["fine_grained_subcategories"]
-            self.test_cases = {}
-            for d in all_data:
-                for e in d["examples"]:
-                    self.test_cases[e] = {}
-
-        elif self.expt_config["dataset"] == "ai2_v0_3_harmful_prompts_train":
-            data_path = "/net/nfs.cirrascale/mosaic/oe-safety-datasets/202405_wildguard/ai2_v0_3_harmful_prompts_train.jsonl"
-            all_data = load_standard_data(data_path)
-            self.test_cases = {}
-            for d in all_data:
-                p = d["prompt"]
-                self.test_cases[p] = {}
-            print("Num Test Cases:", len(self.test_cases))
 
         else:
             raise NotImplementedError
@@ -219,20 +186,6 @@ class ExptManager:
         print("=" * 20, f"\nModel completions saved to ...")
         print(self.model_completion_filename)
         print("=" * 20)
-
-    # def save_intermediate_evaluations(self, intermediate_evaluator_idx, intermediate_evaluations):
-    #     with open(self.intermediate_evaluators_filenames[intermediate_evaluator_idx], 'w') as f:
-    #         json.dump(intermediate_evaluations, f)
-    #     print("=" * 20, f"\nIntermediate evaluations saved to ...")
-    #     print(self.intermediate_evaluators_filenames[intermediate_evaluator_idx])
-    #     print("=" * 20)
-    #
-    # def save_final_evaluation(self, final_evaluation):
-    #     with open(self.final_evaluator_filename, 'w') as f:
-    #         json.dump(final_evaluation, f)
-    #     print("=" * 20, f"\nFinal evaluation saved to ...")
-    #     print(self.final_evaluator_filename)
-    #     print("=" * 20)
 
     def load_attacks(self):
         """
