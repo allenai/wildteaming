@@ -81,11 +81,13 @@ With WildTeaming, we create [WildJailbreak](https://huggingface.co/datasets/alle
 If you find it helpful, please feel free to cite our work!
 ```
 @misc{wildteaming2024,
-      title={{WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models}}, 
-      author={{Liwei Jiang and Seungju Han and Kavel Rao and Allyson Ettinger and Faeze Brahman and Sachin Kumar and Niloofar Mireshghallah and Ximing Lu and Maarten Sap and Nouha Dziri and Yejin Choi}}
+      title={WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models}, 
+      author={Liwei Jiang and Kavel Rao and Seungju Han and Allyson Ettinger and Faeze Brahman and Sachin Kumar and Niloofar Mireshghallah and Ximing Lu and Maarten Sap and Yejin Choi and Nouha Dziri},
       year={2024},
-      journal={arXiv preprint arXiv:2406.18510},
-      primaryClass={cs.CL}
+      eprint={2406.18510},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2406.18510}, 
 }
 ```
 
