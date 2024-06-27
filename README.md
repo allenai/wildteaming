@@ -29,6 +29,7 @@ We introduce <img src=assets/wildteaming_logo.png width=25/> [WildTeaming](https
 - 🛠️ Creating a publicly open, large-scale safety training resource for systematic defense (WildJailbreak).
 
 For more findings, please refer to our [paper](https://arxiv.org/abs/2406.18510)!
+
 <img src=assets/wildteaming.gif width=1200/>
 
 ## Resources
@@ -63,6 +64,8 @@ With WildTeaming, we create [WildJailbreak](https://huggingface.co/datasets/alle
 <img src=assets/data_example_four_types.png width=700/>
 
 While WildJailbreak provides a static dataset, the the WildTeaming framework can be easily applied to compose new adversarial attacks, forming additional safety training data as needed.
+
+<img src=assets/jailbreak_example.gif width=1200/>
 
 > #### Examples:
 <details close>
