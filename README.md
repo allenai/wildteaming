@@ -32,6 +32,7 @@ For more findings, please refer to our [paper](https://arxiv.org/abs/2406.18510)
 
 <hr>
 <img src=assets/wildteaming.png width=900/>
+![Alt Text](assets/wildteaming.gif)
 
 ## Resources
 
