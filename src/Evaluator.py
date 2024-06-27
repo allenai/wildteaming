@@ -7,6 +7,7 @@ sys.path.append(os.getcwd())
 from src.language_models import *
 from data.prompts.evaluator_prompts import evaluator_prompts
 
+
 class Evaluator:
     def __init__(self, evaluator_config, model=None, tokenizer=None):
         self.evaluator_config = evaluator_config
@@ -331,6 +332,3 @@ class Evaluator:
                                                    max_tokens=1)
         raw_preds = ray.get(preds)
         return self._parse_ai2_refusal_preds(raw_preds), raw_preds
-
-
-

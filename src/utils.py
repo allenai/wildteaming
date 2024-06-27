@@ -124,9 +124,11 @@ def save_json(data: dict, output_path: str, makedirs: bool = True):
 
     print(f"Saved json to {output_path}")
 
+
 def read_json(input_path: str):
     with open(input_path, "r") as f:
         return json.load(f)
+
 
 def export_standard_to_csv(data: list[dict], output_path: str):
     df = pd.DataFrame(data)

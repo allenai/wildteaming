@@ -12,6 +12,7 @@ from src.language_models import *
 from data.prompts.system_prompts import system_prompts
 from src.utils import *
 
+
 class Attacker:
     def __init__(self, attacker_config, model=None, tokenizer=None):
         self.COMMON_TACTICS_THRESHOLD = 2

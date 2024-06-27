@@ -6,7 +6,6 @@ import pandas as pd
 
 sys.path.append(os.getcwd())
 from src.utils import *
-from src.Pruner import *
 from src.Defender import *
 
 random.seed(42)
@@ -86,7 +85,6 @@ class ExptManager:
         defender_config = self.expt_config["defender_config"]
         attacker_config = self.expt_config["attacker_config"]
         final_evaluator_config = self.expt_config["final_evaluator_config"]
-        intermediate_evaluators_config = self.expt_config["intermediate_evaluators_config"]
 
         ######## attack save path ########
         attacker_model_name = attacker_config["model_name"].replace("/", "--")
@@ -108,18 +106,6 @@ class ExptManager:
                                       + f"{defender_config_str}/")
         self.model_completion_filename = model_completion_base_path + "model_completions.json"
 
-        ######## intermediate evaluators save path ########
-        self.intermediate_evaluators_filenames = []
-        for eval_config in intermediate_evaluators_config:
-            eval_model_name = eval_config["model_name"].replace("/", "--")
-            eval_config_include = {k: v for k, v in eval_config.items() if k not in config_to_exclude_in_path}
-            eval_config_str = "=".join([f"{k}={v}" for k, v in eval_config_include.items()]).replace("/", "--")
-            intermediate_evaluators_base_path = (model_completion_base_path
-                                                 + f"intermediate_evaluators/model_name={eval_model_name}="
-                                                 + f"{eval_config_str}/")
-            eval_filename = intermediate_evaluators_base_path + "intermediate_evaluations.json"
-            self.intermediate_evaluators_filenames.append(eval_filename)
-
         ######## final evaluator save path ########
         final_evaluator_model_name = final_evaluator_config["model_name"].replace("/", "--")
         final_evaluator_config_include = {k: v for k, v in final_evaluator_config.items()
@@ -132,7 +118,7 @@ class ExptManager:
         self.final_evaluator_filename = final_evaluator_base_path + "final_evaluation.json"
 
         all_filanems = [self.attack_filename, self.model_completion_filename,
-                        self.final_evaluator_filename] + self.intermediate_evaluators_filenames
+                        self.final_evaluator_filename]
         for p in all_filanems:
             if not os.path.exists(os.path.dirname(p)):
                 os.makedirs(os.path.dirname(p))
@@ -151,14 +137,6 @@ class ExptManager:
             with open(config_to_save_path, 'w') as f:
                 json.dump(defender_config, f)
             print("=" * 20, f"\nDefender model completions config saved.")
-
-        ######## save intermediate evaluators config ########
-        for eval_config, eval_filename in zip(intermediate_evaluators_config, self.intermediate_evaluators_filenames):
-            config_to_save_path = os.path.dirname(eval_filename) + "/config.json"
-            if not os.path.exists(config_to_save_path):
-                with open(config_to_save_path, 'w') as f:
-                    json.dump(eval_config, f)
-                print("=" * 20, f"\nIntermediate evaluator config saved.")
 
         ######## save final evaluator config ########
         config_to_save_path = final_evaluator_base_path + "config.json"

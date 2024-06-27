@@ -6,8 +6,8 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 
 sys.path.append(os.getcwd())
-from src.jailbreak_baselines.wildteaming.language_models import *
-from src.tactics.tactic_semantic_cluster_dedup import *
+from src.language_models import *
+from src.tactic_semantic_cluster_dedup import *
 
 
 class TacticsAnalyzer:
@@ -29,18 +29,18 @@ class TacticsAnalyzer:
         self._init_tactic_classification_instruction()
 
     def _init_seed_tactics(self):
-        data_filename = "data/strategies/seed_tactics.tsv"
+        data_filename = "data/tactics/manual_tactics.tsv"
         df = pd.read_csv(data_filename, sep='\t')
         self.seed_tactics = df["strategy"].tolist()
         self.seed_definitions = df["definition"].tolist()
 
     def _init_prompt_simplify_instruction(self):
-        filename = "data/strategies/model_prompts/prompt_simplify_instruction.txt"
+        filename = "data/prompts/prompt_simplify_instruction.txt"
         with open(filename, 'r') as f:
             self.prompt_simplify_base_prompt = f.read()
 
     def _init_tactic_classification_instruction(self):
-        filename = "data/strategies/model_prompts/strategy_classification_instruction_w_excerpt.txt"
+        filename = "data/prompts/mine_tactics_w_excerpt.txt"
         with open(filename, 'r') as f:
             base_prompt = f.read()
         self.tactics_classification_base_prompt = base_prompt.replace(
