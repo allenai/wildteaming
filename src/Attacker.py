@@ -8,10 +8,9 @@ import ray
 from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast, AutoTokenizer
 
 sys.path.append(os.getcwd())
-from src.jailbreak_baselines.wildteaming.language_models import *
-from data.strategies.model_prompts.system_prompts import system_prompts
-from src.utils.main_utils import *
-
+from src.language_models import *
+from data.prompts.system_prompts import system_prompts
+from src.utils import *
 
 class Attacker:
     def __init__(self, attacker_config, model=None, tokenizer=None):
@@ -63,20 +62,21 @@ class Attacker:
         """
         Loads the tactics map amd the frequency map.
         """
-        to_exclude_tactics = ["strategy name", "name of the first new strategy", ""]
-        does_not_contain = ["explicit", "sex", "erotic"]
-
-        data_path = "data/strategies/strategy_map/itw_gpt4_mined_v1_strategy_map.json"
+        data_path = "data/tactics/itw_gpt4_mined_v1_strategy_map.json"
         with open(data_path, "r") as f:
             self.all_tactics_map = json.load(f)
+        self.tactic_frequency_map = read_json(
+            "data/tactics/itw_gpt4_mined_v1_strategy_map_to_frequency.json")
+
+        # ignore some ill-formed tactics and tactics related to explicit content
+        to_exclude_tactics = ["strategy name", "name of the first new strategy", ""]
+        does_not_contain = ["explicit", "sex", "erotic"]
         self.all_tactics_map = {k: v for k, v in self.all_tactics_map.items()
                                 if (k not in to_exclude_tactics)
                                 and k[-1] != ":"
                                 and (all(x not in v["definition"][0].lower() for x in does_not_contain))
                                 and (all(x not in k.lower() for x in does_not_contain))}
 
-        self.tactic_frequency_map = read_json(
-            "data/strategies/strategy_map/itw_gpt4_mined_v1_strategy_map_to_frequency.json")
         self.tactic_frequency_map = {k: v for k, v in self.tactic_frequency_map.items() if k in self.all_tactics_map}
         self.tactic_frequency_list = [(k, v["count"]) for k, v in self.tactic_frequency_map.items()]
         print("Loaded tactics map from:", data_path)
@@ -89,18 +89,18 @@ class Attacker:
         """
         Loads the prompt for composing jailbreak tactics.
         """
-        prompt_base_path = "data/strategies/model_prompts"
+        prompt_base_path = "data/prompts"
         if self.attacker_config["attacker_type"] == "original":
             self._load_compose_tactics_prompt_file(
-                f"{prompt_base_path}/compose_strategies.txt")
+                f"{prompt_base_path}/compose_tactics.txt")
 
-        elif self.attacker_config["attacker_type"] == "without_predix_appending_ex":
+        elif self.attacker_config["attacker_type"] == "without_lead_seed_sentence_example":
             self._load_compose_tactics_prompt_file(
-                f"{prompt_base_path}/compose_strategies_without_predix_appending_ex.txt")
+                f"{prompt_base_path}/compose_tactics_without_lead_seed_sentence_example.txt")
 
-        elif self.attacker_config["attacker_type"] == "fix_prefix_injection":
+        elif self.attacker_config["attacker_type"] == "fix_lead_seed_sentence":
             self._load_compose_tactics_prompt_file(
-                f"{prompt_base_path}/compose_strategies_fix_prefix_injection.txt")
+                f"{prompt_base_path}/compose_tactics_fix_lead_seed_sentence.txt")
 
         else:
             raise ValueError("Attacker type not supported")
