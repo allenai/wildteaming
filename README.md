@@ -78,6 +78,7 @@ With WildTeaming, we create [WildJailbreak](https://huggingface.co/datasets/alle
 
 <img src=assets/data_example_four_types.png width=700/>
 
+While WildJailbreak provides a static dataset, the the WildTeaming framework can be easily applied to compose new adversarial attacks, forming more safety training data as needed. 
 
 #### Examples:
 <details close>
