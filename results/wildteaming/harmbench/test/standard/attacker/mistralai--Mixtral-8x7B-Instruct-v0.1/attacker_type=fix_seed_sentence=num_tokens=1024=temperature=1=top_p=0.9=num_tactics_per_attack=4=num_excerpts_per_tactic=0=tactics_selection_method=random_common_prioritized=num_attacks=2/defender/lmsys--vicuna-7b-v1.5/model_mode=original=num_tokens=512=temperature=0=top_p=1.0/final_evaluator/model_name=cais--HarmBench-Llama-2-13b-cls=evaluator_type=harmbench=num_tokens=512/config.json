@@ -1,0 +1,1 @@
+{"model_name": "cais/HarmBench-Llama-2-13b-cls", "evaluator_type": "harmbench", "num_tokens": 512, "n_devices": 2}

@@ -5,13 +5,16 @@ import os.path
 import pandas as pd
 
 sys.path.append(os.getcwd())
-from src.utils import *
+from src.my_utils import *
 from src.Defender import *
 
 random.seed(42)
 
 
 class ExptManager:
+    """
+    Experiment manager class.
+    """
     def __init__(self, expt_config):
         self.expt_config = expt_config
         self._init_test_cases()
@@ -36,7 +39,7 @@ class ExptManager:
         """
         if self.expt_config["dataset"] == "harmbench":
             split = self.expt_config["split"]
-            data_path = f"src/data/harmbench/harmbench_behaviors_text_{split}.csv"
+            data_path = f"data/harmbench/harmbench_behaviors_text_{split}.csv"
             df_data = pd.read_csv(data_path)
             if self.expt_config["data_types"] != "all":
                 data_types = self.expt_config["data_types"].split("_")
@@ -45,7 +48,7 @@ class ExptManager:
             self.test_cases = {d["Behavior"]: {"behavior_info": d} for d in all_data}
 
             # load target string map
-            data_path = "src/data/harmbench/harmbench_targets_text.json"
+            data_path = "data/harmbench/harmbench_targets_text.json"
             with open(data_path, "r") as f:
                 self.behavior_target_map = json.load(f)
 
@@ -204,12 +207,16 @@ class ExptManager:
         """
         Log the results to wandb.
         """
-        if logs is not None:
-            logs = [v for k, v in logs.items()]
-            df_logs = pd.DataFrame(logs)
-            final_results["final_evaluation"] = df_logs
-        self.logger.log(final_results)
-
+        if self.expt_config["is_wandb"]:
+            if logs is not None:
+                logs = [v for k, v in logs.items()]
+                df_logs = pd.DataFrame(logs)
+                final_results["final_evaluation"] = df_logs
+            self.logger.log(final_results)
+        else:
+            print("No wandb logger found. Skipping logging.")
+            return
+        
     def log_final_results(self,
                           final_evaluation,
                           all_scores=None,

@@ -5,12 +5,12 @@ The Attacker class is used to generate attacks for a given behavior.
 import os
 import sys
 import ray
-from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast, AutoTokenizer
+from transformers import AutoTokenizer
 
 sys.path.append(os.getcwd())
 from src.language_models import *
 from data.prompts.system_prompts import system_prompts
-from src.utils import *
+from src.my_utils import *
 
 
 class Attacker:
@@ -66,8 +66,7 @@ class Attacker:
         data_path = "data/tactics/auto_tactics.json"
         with open(data_path, "r") as f:
             self.all_tactics_map = json.load(f)
-        self.tactic_frequency_map = read_json(
-            "data/tactics/auto_tactics_frequency.json")
+        self.tactic_frequency_map = read_json("data/tactics/auto_tactics_frequency.json")
 
         # ignore some ill-formed tactics and tactics related to explicit content
         to_exclude_tactics = ["strategy name", "name of the first new strategy", ""]

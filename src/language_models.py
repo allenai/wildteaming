@@ -1,13 +1,10 @@
 import time
-from typing import Dict, List
+from typing import List
 import os
 import ray
 from tqdm import tqdm
 from vllm import LLM, SamplingParams
 import openai
-import anthropic
-import google.generativeai as genai
-from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast
 
 
@@ -45,6 +42,7 @@ class GPT():
                   temperature: float,
                   top_p: float,
                   system_message: str = None,
+                  is_print_example: bool = False,
                   **kwargs):
         for _ in range(self.API_MAX_RETRY):
             try:
@@ -53,9 +51,10 @@ class GPT():
                 else:
                     formatted_msg = [{"role": "user", "content": prompt}]
 
-                print("=" * 30, "An Example of formatted prompt", "=" * 30)
-                print(formatted_msg)
-                print("=" * 92)
+                if is_print_example:
+                    print("=" * 30, "An Example of formatted prompt", "=" * 30)
+                    print(formatted_msg)
+                    print("=" * 92)
 
                 response = self.client.chat.completions.create(
                     model=self.model_name,
@@ -93,132 +92,6 @@ class GPT():
         return [self._generate(prompt, max_new_tokens, temperature, top_p, **kwargs) for prompt in prompts]
 
 
-class Claude():
-    API_RETRY_SLEEP = 10
-    API_ERROR_OUTPUT = "$ERROR$"
-    API_QUERY_SLEEP = 1
-    API_MAX_RETRY = 5
-    API_TIMEOUT = 20
-    default_output = "I'm sorry, but I cannot assist with that request."
-
-    def __init__(self, model_name, token) -> None:
-        self.model_name = model_name
-        self.API_KEY = token
-
-        self.model = anthropic.Anthropic(
-            api_key=self.API_KEY,
-        )
-
-    def generate(self, conv: List,
-                 max_n_tokens: int,
-                 temperature: float,
-                 top_p: float):
-        '''
-        Args:
-            conv: List of conversations
-            max_n_tokens: int, max number of tokens to generate
-            temperature: float, temperature for sampling
-            top_p: float, top p for sampling
-        Returns:
-            str: generated response
-        '''
-        output = self.API_ERROR_OUTPUT
-        for _ in range(self.API_MAX_RETRY):
-            try:
-                completion = self.model.completions.create(
-                    model=self.model_name,
-                    max_tokens_to_sample=max_n_tokens,
-                    prompt=conv,
-                    temperature=temperature,
-                    top_p=top_p
-                )
-                output = completion.completion
-                break
-            except Exception as e:
-                # as of Jan 2023, this show the output has been blocked
-                if "Output blocked by content filtering policy" in str(e):
-                    output = self.default_output
-                    break
-                time.sleep(self.API_RETRY_SLEEP)
-
-            time.sleep(self.API_QUERY_SLEEP)
-        return output
-
-    def batched_generate(self,
-                         convs_list: List[List[Dict]],
-                         max_n_tokens: int,
-                         temperature: float,
-                         top_p: float = 1.0, **kwargs):
-        return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
-
-
-class Gemini():
-    API_RETRY_SLEEP = 10
-    API_ERROR_OUTPUT = "$ERROR$"
-    API_QUERY_SLEEP = 1
-    API_MAX_RETRY = 5
-    API_TIMEOUT = 20
-    default_output = "I'm sorry, but I cannot assist with that request."
-
-    def __init__(self, model_name, token) -> None:
-        self.model_name = model_name
-        genai.configure(api_key=token)
-
-        self.safety_settings = {
-            HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-            HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-        }
-
-        self.model = genai.GenerativeModel(model_name)
-
-    def generate(self, conv: List,
-                 max_n_tokens: int,
-                 temperature: float,
-                 top_p: float):
-        '''
-        Args:
-            conv: List of dictionaries,
-            max_n_tokens: int, max number of tokens to generate
-            temperature: float, temperature for sampling
-            top_p: float, top p for sampling
-        Returns:
-            str: generated response
-        '''
-        output = self.API_ERROR_OUTPUT
-        generation_config = genai.types.GenerationConfig(
-            max_output_tokens=max_n_tokens,
-            temperature=temperature,
-            top_p=top_p)
-        chat = self.model.start_chat(history=[])
-        safety_settings = self.safety_settings
-
-        for _ in range(self.API_MAX_RETRY):
-            try:
-
-                completion = chat.send_message(conv, generation_config=generation_config,
-                                               safety_settings=safety_settings)
-                output = completion.text
-                break
-            except (genai.types.BlockedPromptException, genai.types.StopCandidateException, ValueError):
-                # Prompt was blocked for safety reasons
-                output = self.default_output
-                break
-            except Exception as e:
-                print(type(e), e)
-                time.sleep(self.API_RETRY_SLEEP)
-            time.sleep(1)
-        return output
-
-    def batched_generate(self,
-                         convs_list: List[List[Dict]],
-                         max_n_tokens: int,
-                         temperature: float,
-                         top_p: float = 1.0, **kwargs):
-        return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
-
-
 @ray.remote
 class VLLM:
     def __init__(self, model_name_or_path, n_devices=1, **model_kwargs):
@@ -244,6 +117,7 @@ class VLLM:
                          temperature: float = 1.0,
                          top_p: float = 1.0,
                          max_tokens: int = 2048,
+                         is_print_example: bool = False,
                          **sampling_args
                          ):
         if do_chat_formatting:
@@ -257,13 +131,10 @@ class VLLM:
         else:
             formatted_prompts = prompts
 
-        print("=" * 30, "An Example of formatted prompt", "=" * 30)
-        print(formatted_prompts[0])
-        print("=" * 92)
-
-        # for fp in formatted_prompts:
-        #     print(fp)
-        #     print("=" * 100)
+        if is_print_example:
+            print("=" * 30, "An Example of formatted prompt", "=" * 30)
+            print(formatted_prompts[0])
+            print("=" * 92)
 
         sampling_params = SamplingParams(
             max_tokens=max_tokens,

@@ -4,7 +4,7 @@ import random
 import string
 import numpy as np
 
-from src.utils import *
+from src.my_utils import *
 
 
 def load_existing_tactics():
@@ -51,9 +51,6 @@ def get_strategy_map(df_data, save_path="data/tactics/auto_tactics_frequency.jso
             reason = row["reason"]
             strategy_type = row["strategy_type"]
             uid = row["uid"]
-
-            # print(type(definition))
-            # print(definition)
 
             if strategy_type == "existing_strategies":
                 if strategy not in all_existing_strategies:
@@ -119,8 +116,6 @@ def parse_existing_strategy_list(user_uttr_strategy_existing):
             all_parsed["excerpt"].append(e_excerpt)
             all_parsed["reason"].append(e_reason)
 
-    # if len(all_parsed["strategy"]) == 0:
-    #     return None
     return all_parsed
 
 
@@ -167,9 +162,6 @@ def parse_new_strategy_list(user_uttr_strategy_new):
             all_parsed["definition"].append(e_definition)
             all_parsed["excerpt"].append(e_excerpt)
             all_parsed["reason"].append(e_reason)
-
-    # if len(all_parsed["strategy"]) == 0:
-    #     return None
 
     return all_parsed
 

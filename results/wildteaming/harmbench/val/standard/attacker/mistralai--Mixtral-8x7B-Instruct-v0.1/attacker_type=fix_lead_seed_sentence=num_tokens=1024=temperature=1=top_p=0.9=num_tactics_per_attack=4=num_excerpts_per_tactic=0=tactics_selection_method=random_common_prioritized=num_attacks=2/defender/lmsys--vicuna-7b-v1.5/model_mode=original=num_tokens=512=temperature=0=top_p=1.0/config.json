@@ -1,0 +1,1 @@
+{"model_name": "lmsys/vicuna-7b-v1.5", "model_mode": "original", "num_tokens": 512, "temperature": 0, "top_p": 1.0, "use_tqdm": true, "is_vllm": true, "n_devices": 2, "do_chat_formatting": false, "trust_remote_code": true}

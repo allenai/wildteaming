@@ -1,13 +1,3 @@
-def get_pruner_default_config():
-    return {
-        "model_name": "alisawuffles/roberta-large-wanli",
-        "pruner_type": "nli",
-        "num_tokens": 512,
-        "threshold": 0.9,
-        "device": "cuda:7"
-    }
-
-
 def get_final_evaluator_default_config():
     return {"model_name": "cais/HarmBench-Llama-2-13b-cls",
             "evaluator_type": "harmbench",
@@ -38,11 +28,11 @@ def get_attacker_default_config():
             "num_tokens": 1024,
             "temperature": 1,
             "top_p": 0.9,
-            "num_tactics_per_attack": 3,
+            "num_tactics_per_attack": 4,
             "num_excerpts_per_tactic": 0,
             "tactics_selection_method": "random_common_prioritized",
             "num_attacks": 60,
             # vllm specific
             "is_vllm": True,
-            "n_devices": 8,
+            "n_devices": 4,
             }
