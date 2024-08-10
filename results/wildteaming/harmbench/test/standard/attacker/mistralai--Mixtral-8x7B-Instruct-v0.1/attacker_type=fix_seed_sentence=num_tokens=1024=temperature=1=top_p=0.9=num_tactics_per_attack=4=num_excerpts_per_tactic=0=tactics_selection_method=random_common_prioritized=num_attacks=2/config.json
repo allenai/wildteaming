@@ -1,1 +1,0 @@
-{"model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1", "attacker_type": "fix_seed_sentence", "num_tokens": 1024, "temperature": 1, "top_p": 0.9, "num_tactics_per_attack": 4, "num_excerpts_per_tactic": 0, "tactics_selection_method": "random_common_prioritized", "num_attacks": 2, "is_vllm": true, "n_devices": 8}
