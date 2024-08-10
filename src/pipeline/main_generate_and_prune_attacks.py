@@ -65,7 +65,7 @@ def main(args, is_save=True):
     print("Attacker initialized")
 
     off_topics_pruner = get_pruner("wanli")
-    # low_risk_pruner = get_pruner("ai2_safety_request")
+    low_risk_pruner = get_pruner("ai2_safety_request")
     print("Pruners initialized")
 
     all_behaviors = list(test_cases.keys())
@@ -95,8 +95,7 @@ def main(args, is_save=True):
                                                                                                                     behavior_target)
 
             batch_off_topics_prune_labels = off_topics_pruner.prune_off_topics(behavior, batch_behavior_attacks)[0]
-            # batch_low_risk_prune_labels = low_risk_pruner.prune_low_risk(all_behavior_attacks)[0]
-            batch_low_risk_prune_labels = [0] * len(batch_behavior_attacks)
+            batch_low_risk_prune_labels = low_risk_pruner.prune_low_risk(all_behavior_attacks)[0]
             batch_prune_labels = get_prune_labels(batch_off_topics_prune_labels, batch_low_risk_prune_labels)
 
             all_behavior_raw_attacks.extend(batch_behavior_raw_attacks)

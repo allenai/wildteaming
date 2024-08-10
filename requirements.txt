@@ -10,7 +10,6 @@ anyio==4.4.0
 appdirs==1.4.4
 async-timeout==4.0.3
 attrs==24.2.0
-beaker-py==1.31.2
 cachetools==5.3.3
 certifi==2024.7.4
 charset-normalizer==3.3.2
